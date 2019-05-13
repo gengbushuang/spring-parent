@@ -1,0 +1,16 @@
+spring:
+  #application
+  application:
+    name: grpc-server
+server:
+  port: 12346
+
+grpc:
+  server:
+    port: 23457
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.3.11:8666/eureka/
+
