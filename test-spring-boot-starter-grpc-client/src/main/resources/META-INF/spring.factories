@@ -1,0 +1,4 @@
+# AutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+test.com.springboot.autoconfig.grpc.client.GrpcClientAutoConfiguration,\
+test.com.springboot.autoconfig.grpc.client.EurekaAutoConfiguration
