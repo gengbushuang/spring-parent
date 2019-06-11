@@ -11,5 +11,22 @@
 
     <artifactId>nrpc-test</artifactId>
 
+    <dependencies>
+        <!-- springboot web起步依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>spring-boot-autoconfigure-test</groupId>
+            <artifactId>test-spring-boot-starter-nrpc-server</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

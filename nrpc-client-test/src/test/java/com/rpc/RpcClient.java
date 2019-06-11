@@ -1,62 +1,27 @@
 package com.rpc;
 
-import com.actoconfigure.test.model.rpc_package.HelloReply;
-import com.actoconfigure.test.model.rpc_package.HelloRequest;
-import com.actoconfigure.test.model.rpc_package.HelloWorldServiceGrpc;
-import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
-import io.grpc.StatusRuntimeException;
+import com.nrpc.NrpcApplication;
+import com.nrpc.test.NrpcClientTest;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.concurrent.TimeUnit;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(classes = NrpcApplication.class)
 public class RpcClient {
-    private final ManagedChannel channel;
-    private final HelloWorldServiceGrpc.HelloWorldServiceBlockingStub blockingStub;
-    private final HelloWorldServiceGrpc.HelloWorldServiceStub serviceStub;
 
-    public RpcClient(String host, int port) {
-        this(ManagedChannelBuilder.forAddress(host, port).usePlaintext(true));
-    }
+    @Autowired
+    private NrpcClientTest nrpcClientTest;
 
-    public RpcClient(ManagedChannelBuilder<?> channelBuilder) {
-        channel = channelBuilder.build();
-        this.blockingStub = HelloWorldServiceGrpc.newBlockingStub(channel);
-        this.serviceStub = HelloWorldServiceGrpc.newStub(channel);
-    }
-
-    public void shutdown() throws InterruptedException {
-        channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
-    }
-
-    public void greet(String name) {
-        HelloRequest request = HelloRequest.newBuilder().setName(name).build();
-        HelloReply response;
-        try {
-            response = blockingStub.sayHello(request);
-        } catch (StatusRuntimeException e) {
-            return;
-        }
-        System.out.println("------>Greeting: " + response.getMessage());
-    }
-
-    public static void main(String[] args) throws InterruptedException {
-//        RpcClient client = new RpcClient("localhost", 9090);
-//        String user = "world";
-//        try {
-//            client.greet(user);
-//        } finally {
-//            client.shutdown();
-//        }
-        boolean b = false;
-        try {
-            if(b){
-                return;
-            }
-            System.out.println("bbbb");
-        }finally {
-            System.out.println("finally");
+    @Test
+    public void testRpc(){
+        for(int i = 0;i<10;i++) {
+            nrpcClientTest.testHelo("你好!");
         }
     }
-
 
 }
