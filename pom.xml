@@ -19,13 +19,20 @@
         <module>test-spring-boot-starter-nrpc-client</module>
         <module>nrpc-test</module>
         <module>nrpc-client-test</module>
+        <module>spring-undertow</module>
+        <module>test-spring-boot-starter-netty</module>
+        <module>spring-shiro</module>
+        <module>test-spring-boot-starter-importselector</module>
+        <module>test-spring-jdbc</module>
+        <module>test-spring-bucks</module>
+        <module>spring-eureka-server</module>
     </modules>
 
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.6.RELEASE</version>
+        <version>2.1.4.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -36,7 +43,7 @@
         <grpc.version>1.5.0</grpc.version>
         <netty.version>4.1.12.Final</netty.version>
         <protostuff.version>1.5.9</protostuff.version>
-        <spring-cloud.version>Dalston.SR2</spring-cloud.version>
+        <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
     </properties>
 
 
