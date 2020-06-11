@@ -1,0 +1,50 @@
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /actuator
+  server:
+  #端口
+    port: 8089
+
+spring:
+  #application
+  application:
+    name: spring-database
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    #url: jdbc:h2:mem:bucks
+    #driverClassName: org.h2.Driver
+    url: jdbc:p6spy:mysql://192.168.38.5:3306/bucks
+    driverClassName: com.p6spy.engine.spy.P6SpyDriver
+    username: root
+    password: root123
+  redis:
+    host: 192.168.38.5
+    lettuce:
+      pool:
+        maxActive: 5
+        maxIdle: 5
+  #cache:
+  #缓存用redis
+    #type: redis
+    #缓存名字
+    #cache-names: coffee
+    #redis:
+    #缓存时间
+      #time-to-live: 5000
+      #是否缓存null
+      #cache-null-values: false
+  jpa:
+    hibernate:
+      ddl-auto: none
+    #properties:
+     # hibernate:
+      #  show_sql: true
+       # format_sql: true
+
+
