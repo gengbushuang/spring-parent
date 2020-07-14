@@ -117,7 +117,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  *      2.Object interceptorOrInterceptionAdvice = this.interceptorsAndDynamicMethodMatchers.get(++this.currentInterceptorIndex);
  *          获取数组链的拦截器链类，对currentInterceptorIndex下标进行递增
  *      3.((MethodInterceptor) interceptorOrInterceptionAdvice).invoke(this);调用链接器链invoke方法、
- *      4.然而链接器链invoke方法又继续调用当前链接器链的proceed()方法，进行循环获取this.interceptorsAndDynamicMethodMatchers的拦截器。
+ *      4.然而链接器链invoke方法又继续调用CglibMethodInvocation的proceed()方法，进行循环获取this.interceptorsAndDynamicMethodMatchers的拦截器。
  *      5.效果：
  *          正常执行：前置通知-》目标方法-》后置通知-》返回通知
  *  * 		出现异常：前置通知-》目标方法-》后置通知-》异常通知
